@@ -187,8 +187,9 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Views\Route\Index.cshtml" />
+    <None Include="Views\Route\Index.cshtml" />
     <None Include="Properties\PublishProfiles\donet-route.pubxml" />
+    <Content Include="Views\Route\test.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

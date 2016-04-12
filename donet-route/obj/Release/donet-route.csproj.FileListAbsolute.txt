@@ -71,3 +71,4 @@ D:\github\donet-route\donet-route\bin\zh-Hans\Microsoft.Owin.Security.Twitter.re
 D:\github\donet-route\donet-route\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 D:\github\donet-route\donet-route\obj\Release\donet-route.dll
 D:\github\donet-route\donet-route\obj\Release\donet-route.pdb
+D:\github\donet-route\donet-route\obj\Release\donet-route.csprojResolveAssemblyReference.cache

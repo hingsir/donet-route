@@ -12,10 +12,14 @@
 <body>
     <div>
         <h2>当前页面: @ViewBag.viewName</h2>
-        <form>
-            <input name="path" />
-            <button type="submit">gogogo</button>
-        </form>
+            <input id="path" />
+            <button id="go">gogogo</button>
     </div>
+    <script>
+        document.getElementById("go").onclick = function () {
+            window.location.href = document.getElementById("path").value
+        }
+        
+    </script>
 </body>
 </html>

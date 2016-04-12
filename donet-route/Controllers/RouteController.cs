@@ -3,27 +3,69 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Text;
 
 namespace donet_route.Controllers
 {
     public class RouteController : Controller
     {
+        private static string mappingFile = "/async/UrlMapping.js";
+        private static Dictionary<String, String> mapping = null;
         public ActionResult Index()
         {
-            string viewName;
-            try
-            {
-                viewName = HttpContext.Request.Url.Query.Replace("%2F", "/").Substring(6);
+
+            var path = HttpContext.Request.Path;
+            if(Regex.IsMatch(path,"\\.cshtml$")){
+                ViewBag.viewName = path;
+                return View("/Views" + path);
             }
-            catch (Exception e)
+            else
             {
-                viewName = "/Views/Route/Index.cshtml";
+                if (mapping == null)
+                {
+                    mapping = getUrlMapping();
+                }
+                if (mapping.ContainsKey(path))
+                {
+                    return Content(readFile(mapping[path]));
+                }
+                else
+                {
+                    return Content("Welcome to Donet !");
+                }
+                
+                
             }
 
-            ViewBag.viewName = viewName;
-
-            return View(viewName);
         }
 
+        private Dictionary<String, String> getUrlMapping()
+        {
+            Dictionary<String, String> dic = new Dictionary<string, string>();
+            String content = readFile(mappingFile);
+            content = content.Replace("\r", "").Replace("\n", "").Replace(" ","");
+            MatchCollection mc = Regex.Matches(content, "([\'\"])[^\'\"]+\\1\\:([\'\"])[^\'\"]+\\2");
+            for (int i = 0; i < mc.Count; i++)
+            {
+                var arr = mc[i].ToString().Replace("'","").Replace("\"","").Split(':');
+                dic.Add(arr[0], arr[1]);
+            }
+            return dic;
+        }
+
+        private string readFile(string file){
+            string realPath = Server.MapPath(HttpContext.Request.ApplicationPath) + file;
+            StringBuilder sb = new StringBuilder();
+            StreamReader sr = new StreamReader(realPath, Encoding.Default);
+            String line;
+            while ((line = sr.ReadLine()) != null)
+            {
+               sb.Append(line);
+            }
+            sr.Close();
+            return sb.ToString();
+        }
 	}
 }
