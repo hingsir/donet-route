@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\github\donet-route\.deploy</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\github\donet-dev\libs\donet\libs\donet-route</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="async/UrlMapping.js">
@@ -16,7 +16,7 @@
       <publishTime>04/08/2016 17:49:22</publishTime>
     </File>
     <File Include="bin/donet-route.dll">
-      <publishTime>04/12/2016 17:11:25</publishTime>
+      <publishTime>04/13/2016 08:46:13</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/08/2016 17:49:23</publishTime>

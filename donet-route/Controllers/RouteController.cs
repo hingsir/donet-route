@@ -29,7 +29,7 @@ namespace donet_route.Controllers
                 }
                 if (mapping.ContainsKey(path))
                 {
-                    return Content(readFile(mapping[path]));
+                    return Json(readFile(mapping[path]), JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
