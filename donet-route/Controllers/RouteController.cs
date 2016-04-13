@@ -58,7 +58,7 @@ namespace donet_route.Controllers
         private string readFile(string file){
             string realPath = Server.MapPath(HttpContext.Request.ApplicationPath) + file;
             StringBuilder sb = new StringBuilder();
-            StreamReader sr = new StreamReader(realPath, Encoding.Default);
+            StreamReader sr = new StreamReader(realPath, Encoding.UTF8);
             String line;
             while ((line = sr.ReadLine()) != null)
             {
